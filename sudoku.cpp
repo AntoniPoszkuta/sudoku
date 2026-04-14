@@ -29,7 +29,7 @@ bool check_box(int tab[9][9], int x, int y, int target) {
             if (tab[y][x] == target) return false;  
         }
     }
-    
+
     return true;
 }   
 
@@ -49,7 +49,10 @@ bool check_col(int tab[9][9], int x, int y, int target) {
     return true;
 }
 
-bool check_box(int tab[9][9], int x, int y, int target)
+bool check_cell(int tab[9][9], int x, int y, int target) {
+    return (check_col(tab,x,y,target) and check_row(tab,x,y,target) and check_box(tab,x,y,target))
+
+}
 
 int sudoku[9][9] = {0};
 
