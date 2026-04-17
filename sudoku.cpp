@@ -6,6 +6,10 @@
 using namespace std;
 
 
+class cell {
+    
+}
+
 // gives vector of ordered numbers form 1 to 9
 vector<int> get_new_numbers() {
     vector<int> v = {1,2,3,4,5,6,7,8,9};
