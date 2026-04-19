@@ -6,9 +6,22 @@
 using namespace std;
 
 
-class cell {
-    
-}
+// class cell {
+//     private:
+//         int row;
+//         int column;
+//         int box_row;
+//         int box_column;
+//         vector<int> possible_values;
+//         int number_of_possible_values;
+//         int value;
+//     public:
+//         cell(int X, int Y, int BOX_X, int BOX_Y) : column(X), row(Y), box_column(BOX_X), box_row(BOX_Y) {
+//             value = -1;
+//             possible_values = get_new_numbers();
+//             number_of_possible_values = get_new_numbers.size();
+//         }
+// } 
 
 // gives vector of ordered numbers form 1 to 9
 vector<int> get_new_numbers() {
@@ -96,36 +109,36 @@ void display_grid(int tab[9][9]) {
 }
 
 // inserts random numbers 1 to 9 into given box (respects sudoku rules)
-// void insert_box(int tab[9][9], int x, int y) {
-//     vector<int> numbers = get_new_numbers();
-//     vector<int> current_numbers = get_new_numbers();
+void insert_box(int tab[9][9], int x, int y) {
+    vector<int> numbers = get_new_numbers();
+    vector<int> current_numbers = get_new_numbers();
 
-//     int target_x = get_group(x);
-//     int target_y = get_group(y);
-//     unsigned int size = numbers.size();
-//     unsigned int new_number_index;
+    int target_x = get_group(x);
+    int target_y = get_group(y);
+    unsigned int size = numbers.size();
+    unsigned int new_number_index;
     
 
-//     for (int i = target_y; i < target_y + 3; i++) {
-//         for (int j = target_x; j < target_x + 3; j++) {
-//             do
-//             {
-//                 new_number_index = rand() % size;
-//                 current_numbers.erase(current_numbers.begin() + new_number_index);
-//                 size--;
-//                 cout << "HEJ! chce uzyc teraz " << numbers[new_number_index] << "a moj size to  " << size << "oraz dostepne numery to "; 
-//                 display_numbers(current_numbers);
-//             } while (!check_cell(tab, j, i, current_numbers[new_number_index]));
+    for (int i = target_y; i < target_y + 3; i++) {
+        for (int j = target_x; j < target_x + 3; j++) {
+            do
+            {
+                new_number_index = rand() % size;
+                current_numbers.erase(current_numbers.begin() + new_number_index);
+                size--;
+                cout << "HEJ! chce uzyc teraz " << numbers[new_number_index] << "a moj size to  " << size << "oraz dostepne numery to "; 
+                display_numbers(current_numbers);
+            } while (!check_cell(tab, j, i, current_numbers[new_number_index]));
             
-//             tab[i][j] = current_numbers[new_number_index];
-//             display_grid(tab);
-//             // numbers.erase(numbers.begin() + new_number_index);
-//             numbers.erase(remove(numbers.begin(), numbers.end(), current_numbers[new_number_index]), numbers.end());
-//             size = numbers.size();
-//             current_numbers = numbers;
-//         }
-//     }
-// }
+            tab[i][j] = current_numbers[new_number_index];
+            display_grid(tab);
+            // numbers.erase(numbers.begin() + new_number_index);
+            numbers.erase(remove(numbers.begin(), numbers.end(), current_numbers[new_number_index]), numbers.end());
+            size = numbers.size();
+            current_numbers = numbers;
+        }
+    }
+}
 
 // inserts random numbers from 1 to 9 into given box (doesn't expect sudoku rules / fully random) 
 void insert_box_random(int tab[9][9], int x, int y) {
